@@ -6,6 +6,7 @@ import {
   View,
   StyleSheet,
   StatusBar,
+  Button
 } from "react-native";
 import ExamData from "../../src/ExamData";
 import {
@@ -17,74 +18,151 @@ import {
 } from "react-native-paper";
 import { setStatusBarHidden } from "expo-status-bar";
 import { Formik } from "formik";
-import FormikSample from "./FormikSample";
-const Item = ({ itemNumber, question, answerOptions }) => {
-  // <View style={styles.item}>
-  //   <Text style={styles.title}>{title}</Text>
-  // </View>
+import Question from "./Question";
 
-  setStatusBarHidden(true);
-  const [arrayOfAnswers, setArrayofAnswers] = React.useState([]);
 
-  // useEffect(() => {
-  //   // Update the document title using the browser API
-  //   setArrayofAnswers((oldValue) => [...oldValue, value]);
-  //   console.log(arrayOfAnswers);
-  // }, [value]);
+// const Item = ({ itemNumber, question, answerOptions }) => {
+//   // <View style={styles.item}>
+//   //   <Text style={styles.title}>{title}</Text>
+//   // </View>
+
+//   setStatusBarHidden(true);
+//   const [arrayOfAnswers, setArrayofAnswers] = React.useState([]);
+
+//   // useEffect(() => {
+//   //   // Update the document title using the browser API
+//   //   setArrayofAnswers((oldValue) => [...oldValue, value]);
+//   //   console.log(arrayOfAnswers);
+//   // }, [value]);
+//   return (
+//     <View style={styles.formWrapper}>
+//       <View style={styles.formDetails}>
+//         <Text style={styles.title}>{itemNumber}</Text>
+//         <View style={styles.divider}></View>
+//         <Text style={styles.question}>{question}</Text>
+//       </View>
+
+//       <View style={styles.radioGroup}>
+//         {answerOptions.map((choices) => {
+//           return (
+//             <View style={styles.choiceContainer}>
+//               <RadioButton value={choices.choiceText} />
+//               <Text style={styles.choiceText}>{choices.choiceText}</Text>
+//             </View>
+//           );
+//         })}
+
+//         {/* <View style={styles.choiceContainer}>
+//             <RadioButton value="B" />
+//             <Text style={styles.choiceText}>{choiceB}</Text>
+//           </View>
+//           <View style={styles.choiceContainer}>
+//             <RadioButton value="C" />
+//             <Text style={styles.choiceText}>{choiceC}</Text>
+//           </View>
+//           <View style={styles.choiceContainer}>
+//             <RadioButton value="D" />
+//             <Text style={styles.choiceText}>{choiceD}</Text>
+//           </View> */}
+//       </View>
+//     </View>
+//   );
+// };
+
+// function Examv3(props) {
+//   const renderItem = ({ item }) => (
+//     <Item
+//       itemNumber={item.itemNumber}
+//       question={item.question}
+//       answerOptions={item.answerOptions}
+//     />
+//   );
+
+//   return (
+//     <SafeAreaView style={styles.container}>
+//       <FlatList
+//         data={ExamData}
+//         renderItem={renderItem}
+//         keyExtractor={(item) => item.id}
+//       />
+//       <Text>asdasd</Text>
+//       <FormikSample />
+//     </SafeAreaView>
+//   );
+// }
+
+
+
+function Examv3() {
+  const Questions = [
+    {
+      "question": "asdasd",
+      "choices": ["asd", "asd", "asd", 'asd'],
+      "correctAnswer": "a",
+    },
+    {
+      "question": "asdasd",
+      "choices": ["asd", "asd", "asd", 'asd'],
+      "correctAnswer": "a",
+    },
+    {
+      "question": "asdasd",
+      "choices": ["asd", "asd", "asd", 'asd'],
+      "correctAnswer": "a",
+    },
+    {
+      "question": "asdasd",
+      "choices": ["asd", "asd", "asd", 'asd'],
+      "correctAnswer": "a",
+    },
+    {
+      "question": "asdasd",
+      "choices": ["asd", "asd", "asd", 'asd'],
+      "correctAnswer": "a",
+    },
+
+  ];
+
+  const Answers = {};
+
+  const handleAnswers = (questionID, answer) => {
+    Answers[questionID] = answer;
+  }
+
+  const handleSubmit = () => {
+    let correct = 0;
+
+    for(let i = 0; i < Questions.length ; i++) {
+      if(Questions[i].correctAnswer == Answers[i+1]) {
+        correct++;
+      }
+    }
+
+    console.log("Correct Answer: ", correct);
+
+
+  }
+
   return (
-    <View style={styles.formWrapper}>
-      <View style={styles.formDetails}>
-        <Text style={styles.title}>{itemNumber}</Text>
-        <View style={styles.divider}></View>
-        <Text style={styles.question}>{question}</Text>
-      </View>
-
-      <View style={styles.radioGroup}>
-        {answerOptions.map((choices) => {
+    <SafeAreaView> 
+      {
+        Questions &&
+        Questions.map((query, index) => {
           return (
-            <View style={styles.choiceContainer}>
-              <RadioButton value={choices.choiceText} />
-              <Text style={styles.choiceText}>{choices.choiceText}</Text>
-            </View>
-          );
-        })}
+            <Question 
+              index={index+1}
+              question={query.question}
+              choices={query.choices}
+              correctAnswer={query.correctAnswer}
+              handleAnswers={ handleAnswers }
+            />
+          )
+        })
+      }
 
-        {/* <View style={styles.choiceContainer}>
-            <RadioButton value="B" />
-            <Text style={styles.choiceText}>{choiceB}</Text>
-          </View>
-          <View style={styles.choiceContainer}>
-            <RadioButton value="C" />
-            <Text style={styles.choiceText}>{choiceC}</Text>
-          </View>
-          <View style={styles.choiceContainer}>
-            <RadioButton value="D" />
-            <Text style={styles.choiceText}>{choiceD}</Text>
-          </View> */}
-      </View>
-    </View>
-  );
-};
-
-function Examv3(props) {
-  const renderItem = ({ item }) => (
-    <Item
-      itemNumber={item.itemNumber}
-      question={item.question}
-      answerOptions={item.answerOptions}
-    />
-  );
-
-  return (
-    <SafeAreaView style={styles.container}>
-      <FlatList
-        data={ExamData}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id}
-      />
-      <FormikSample />
+      <Button title="Submit" onPress={() => handleSubmit()} />
     </SafeAreaView>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
