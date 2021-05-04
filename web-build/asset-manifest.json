@@ -1,0 +1,41 @@
+{
+  "files": {
+    "app.js": "/static/js/app.522728a4.chunk.js",
+    "app.js.map": "/static/js/app.522728a4.chunk.js.map",
+    "runtime~app.js": "/static/js/runtime~app.2e9f1821.js",
+    "runtime~app.js.map": "/static/js/runtime~app.2e9f1821.js.map",
+    "static/js/2.4bee428d.chunk.js": "/static/js/2.4bee428d.chunk.js",
+    "static/js/2.4bee428d.chunk.js.map": "/static/js/2.4bee428d.chunk.js.map",
+    "fonts/MaterialCommunityIcons.ttf": "/./fonts/MaterialCommunityIcons.ttf",
+    "fonts/MontserratBold.ttf": "/./fonts/MontserratBold.ttf",
+    "fonts/MontserratLight.ttf": "/./fonts/MontserratLight.ttf",
+    "fonts/MontserratRegular.ttf": "/./fonts/MontserratRegular.ttf",
+    "fonts/MontserratSemiBold.ttf": "/./fonts/MontserratSemiBold.ttf",
+    "favicon-16.png": "/favicon-16.png",
+    "favicon-32.png": "/favicon-32.png",
+    "favicon.ico": "/favicon.ico",
+    "index.html": "/index.html",
+    "manifest.json": "/manifest.json",
+    "serve.json": "/serve.json",
+    "static/js/2.4bee428d.chunk.js.LICENSE.txt": "/static/js/2.4bee428d.chunk.js.LICENSE.txt",
+    "static/media/DLSU.png": "/static/media/DLSU.f5cdef30.png",
+    "static/media/EARIST.png": "/static/media/EARIST.67888173.png",
+    "static/media/FEU.png": "/static/media/FEU.79bfad9c.png",
+    "static/media/GradeLift.png": "/static/media/GradeLift.3c2d928b.png",
+    "static/media/LYCEUM.png": "/static/media/LYCEUM.6a94ba63.png",
+    "static/media/MAPUA.png": "/static/media/MAPUA.acfb17cd.png",
+    "static/media/NPA.png": "/static/media/NPA.21191fa2.png",
+    "static/media/PMA.png": "/static/media/PMA.970adfa1.png",
+    "static/media/PNU.png": "/static/media/PNU.b761a8eb.png",
+    "static/media/SU.png": "/static/media/SU.cb8b962f.png",
+    "static/media/TUP.png": "/static/media/TUP.401b646a.png",
+    "static/media/UE.png": "/static/media/UE.5abd90b7.png",
+    "static/media/UP.png": "/static/media/UP.5c6cc03f.png",
+    "static/media/UST.png": "/static/media/UST.cea851de.png"
+  },
+  "entrypoints": [
+    "static/js/runtime~app.2e9f1821.js",
+    "static/js/2.4bee428d.chunk.js",
+    "static/js/app.522728a4.chunk.js"
+  ]
+}
