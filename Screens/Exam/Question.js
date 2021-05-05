@@ -1,83 +1,101 @@
-import React from 'react'
-import { View } from "react-native";
-import { RadioButton, Text } from 'react-native-paper';
+import React from "react";
+import { View, StyleSheet } from "react-native";
+import {
+  RadioButton,
+  Text,
+  Surface,
+  TouchableRipple,
+} from "react-native-paper";
 
 function Question(props) {
-	const {
-		index,
-		question,
-		choices,
-		correctAnswer,
-		handleAnswers
+  const { index, question, choices, correctAnswer, handleAnswers } = props;
 
-	} = props
+  const [value, setValue] = React.useState("");
 
-	const [value, setValue] = React.useState('');
-
-	return (
-		<View>
-			<Text>QUESTION {index}: {question} </Text>
-			<RadioButton.Group onValueChange={newValue => {setValue(newValue); handleAnswers(index, newValue)}} value={value}>
-		      <View>
-		        <Text>{choices[0]}</Text>
-		        <RadioButton value="a" />
-		      </View>
-		      <View>
-		        <Text>{choices[1]}</Text>
-		        <RadioButton value="b" />
-		      </View>
-		      <View>
-		        <Text>{choices[2]}</Text>
-		        <RadioButton value="c" />
-		      </View>
-		      <View>
-		        <Text>{choices[3]}</Text>
-		        <RadioButton value="d" />
-		      </View>
-		    </RadioButton.Group>
-		</View>
-	)
+  return (
+    <View style={styles.formWrapper}>
+      <Text style={styles.title}>
+        QUESTION {index}: {question}
+      </Text>
+      <RadioButton.Group
+        onValueChange={(newValue) => {
+          setValue(newValue);
+          handleAnswers(index, newValue);
+        }}
+        value={value}
+      >
+        <View style={styles.radioGroup}>
+          {choices.map((item) => {
+            return (
+              <TouchableRipple
+                borderless={true}
+                style={{ marginVertical: 5, borderRadius: 20 }}
+              >
+                <Surface style={{ elevation: 5 }}>
+                  <RadioButton.Item
+                    value={item}
+                    label={item}
+                    style={{ flexDirection: "row" }}
+                    labelStyle={{
+                      marginVertical: 10,
+                      marginRight: 20,
+                      fontSize: 20,
+                      fontFamily: "MontserratBold",
+                      width: 0,
+                    }}
+                  />
+                </Surface>
+              </TouchableRipple>
+            );
+          })}
+        </View>
+      </RadioButton.Group>
+    </View>
+  );
 }
 
-// import React from 'react';
-// import ReactDOM from 'react-dom';
-// import { Formik, Field, Form } from 'formik';
+const styles = StyleSheet.create({
+  container: {
+    alignItems: "center",
+    flex: 1,
 
-// const Example = () => (
-//   <div>
-//     <h1>Sign Up</h1>
-//     <Formik
-//       initialValues={{
-//         picked: '',
-//       }}
-//       onSubmit={async (values) => {
-//         await new Promise((r) => setTimeout(r, 500));
-//         alert(JSON.stringify(values, null, 2));
-//       }}
-//     >
-//       {({ values }) => (
-//         <Form>
-//           <div id="my-radio-group">Picked</div>
-//           <div role="group" aria-labelledby="my-radio-group">
-//             <label>
-//               <Field type="radio" name="picked" value="One" />
-//               One
-//             </label>
-//             <label>
-//               <Field type="radio" name="picked" value="Two" />
-//               Two
-//             </label>
-//             <div>Picked: {values.picked}</div>
-//           </div>
+    paddingHorizontal: 3,
+  },
+  timeWrapper: {
+    height: 50,
+    width: 200,
+    marginVertical: 30,
+    backgroundColor: "#caefd1",
+  },
+  formWrapper: {
+    flex: 1,
+    marginVertical: 70,
+    paddingHorizontal: 30,
+  },
+  formDetails: {},
+  title: {
+    marginVertical: 10,
+    fontSize: 25,
+    fontFamily: "MontserratBold",
+    flexWrap: "wrap",
+  },
+  question: {
+    fontSize: 20,
+    fontFamily: "MontserratRegular",
+  },
+  radioGroup: {
+    justifyContent: "flex-end",
+    paddingHorizontal: 20,
+    marginVertical: 50,
+  },
+  choiceContainer: {
+    marginVertical: 5,
+    flexDirection: "row",
+    alignItems: "center",
+    height: 50,
+    elevation: 2,
+    borderRadius: 10,
+  },
+});
 
-//           <button type="submit">Submit</button>
-//         </Form>
-//       )}
-//     </Formik>
-//   </div>
-// );
-
-// ReactDOM.render(<Example />, document.getElementById('root'));
-
-
-export default Question
+export default Question;

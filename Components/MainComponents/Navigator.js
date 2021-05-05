@@ -6,7 +6,7 @@ import Landing from "../../Screens/Auth/Landing";
 import ForgotPass from "../../Screens/Auth/Forgot";
 import Main from "../../Screens/Main/Main";
 import schoolDetail from "../../Screens/Main/SchoolDetail";
-import Examv3 from "../../Screens/Exam/Examv3";
+import Exam from "../../Screens/Exam/Exam";
 import TestTimeType from "../../Screens/Checkpoints/TestTimeType";
 import SubjectPicker from "../../Screens/Checkpoints/SubjectPicker";
 
@@ -18,7 +18,7 @@ function Navigator() {
       screenOptions={{
         headerShown: false,
       }}
-      initialRouteName={"Main"}
+      initialRouteName={"Exam"}
     >
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Register" component={Register} />
@@ -26,7 +26,7 @@ function Navigator() {
 
       <Stack.Screen name="Landing" component={Landing} />
 
-      <Stack.Screen name="Examv3" component={Examv3} />
+      <Stack.Screen name="Exam" component={Exam} />
       <Stack.Screen name="TestTimeType" component={TestTimeType} />
       <Stack.Screen name="SubjectPicker" component={SubjectPicker} />
       <Stack.Screen

@@ -40,7 +40,6 @@ function main({ navigation }) {
         <View style={styles.HeadWrapper}>
           <Text style={styles.firstTitle}>Review/Take Mock Exams</Text>
         </View>
-
         <TestCards />
       </SafeAreaView>
     </ScrollView>
