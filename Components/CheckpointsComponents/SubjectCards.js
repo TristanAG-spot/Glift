@@ -1,25 +1,30 @@
 import React from "react";
 import { TouchableOpacity, Text, View, StyleSheet } from "react-native";
-import { Surface, Checkbox } from "react-native-paper";
+import { Surface, Checkbox, TouchableRipple, Button } from "react-native-paper";
 function SubjectCards({ subjectName }) {
   const [checked, setChecked] = React.useState(false);
+
   return (
-    <TouchableOpacity
-      onPress={() => {
-        setChecked(!checked);
-      }}
-    >
+    <TouchableRipple borderless={true}>
       <Surface style={styles.bigCards}>
-        <View style={{ marginLeft: 40 }}>
+        {/* <View style={{ marginLeft: 40 }}>
           <Text style={styles.cardTitle}>{subjectName}</Text>
           <Text style={styles.paragraph}>
             A Standard Timer can be paused at any time.
           </Text>
-        </View>
+        </View> */}
 
-        <Checkbox testID="2" status={checked ? "checked" : "unchecked"} />
+        <Checkbox.Item
+          label={subjectName}
+          labelStyle={styles.cardTitle}
+          testID={subjectName}
+          status={checked ? "checked" : "unchecked"}
+          onPress={() => {
+            setChecked(!checked);
+          }}
+        />
       </Surface>
-    </TouchableOpacity>
+    </TouchableRipple>
   );
 }
 

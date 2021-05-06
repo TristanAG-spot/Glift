@@ -7,7 +7,7 @@ import {
   View,
   StatusBar,
 } from "react-native";
-import { Surface, Checkbox } from "react-native-paper";
+import { Button } from "react-native-paper";
 import SubjectCards from "../../Components/CheckpointsComponents/SubjectCards";
 function SubjectPicker({ route, navigation }) {
   const { subjects } = route.params;
@@ -21,6 +21,9 @@ function SubjectPicker({ route, navigation }) {
         {subjects.map((items) => {
           return <SubjectCards subjectName={items} />;
         })}
+        <Button mode="contained" onPress={() => console.log("Pressed")}>
+          Exam
+        </Button>
       </View>
     </View>
   );
