@@ -18,7 +18,7 @@ function Navigator() {
       screenOptions={{
         headerShown: false,
       }}
-      initialRouteName={"Exam"}
+      initialRouteName={"Main"}
     >
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Register" component={Register} />

@@ -14,14 +14,6 @@ import schoolData from "../../src/schoolData"; //DUMMY DATA
 import Header from "./header";
 import { useNavigation } from "@react-navigation/native";
 
-import {
-  Card,
-  Title,
-  Paragraph,
-  RadioButton,
-  Searchbar,
-} from "react-native-paper";
-
 //school cards
 const Item = ({
   //you are repeating the same shit

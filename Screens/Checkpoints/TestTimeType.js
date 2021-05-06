@@ -8,6 +8,7 @@ import {
   StatusBar,
 } from "react-native";
 import { Surface } from "react-native-paper";
+import TimerCards from "../../Components/CheckpointsComponents/TimerCards";
 
 function TestTimeType({ route, navigation }) {
   const { subjects } = route.params;
@@ -19,26 +20,44 @@ function TestTimeType({ route, navigation }) {
       </View>
       {/* MAKE THIS INTO A SINGLE CARD COMPONENT */}
       <View style={styles.cardWrapper}>
-        <TouchableOpacity
-          onPress={() => navigation.navigate("Examv3", { subjects })}
-        >
-          <Surface style={styles.bigCards}>
-            <Text style={styles.cardTitle}>Standard</Text>
-            <Text style={styles.paragraph}>
-              A Standard Timer can be paused at any time.
-            </Text>
-          </Surface>
-        </TouchableOpacity>
+        <TimerCards
+          type={"Standard"}
+          subjects={subjects}
+          navigation={navigation}
+          description={
+            "A Standard Timer allows for resuming and pausing forms."
+          }
+        />
+        <TimerCards
+          type={"Strict"}
+          subjects={subjects}
+          description={
+            "A Strict Timer automatically submits your form when you run out of time."
+          }
+        />
+        <TimerCards
+          type={"School Standard"}
+          subjects={subjects}
+          description={
+            "Replicates the time frame administered by the entrance exam."
+          }
+        />
 
-        <TouchableOpacity>
-          <Surface style={styles.bigCards}>
-            <Text style={styles.cardTitle}>Strict</Text>
-            <Text style={styles.paragraph}>
-              A Stricter Time exam will be discarded when you fail to submit in
-              time.
-            </Text>
-          </Surface>
-        </TouchableOpacity>
+        {/* <TimerCards
+          type={"Strict"}
+          subjects={subjects}
+          description={"automatically submits your form when time runs out."}
+        />
+        <TimerCards
+          type={"Timeless"}
+          subjects={subjects}
+          description={"disables the time for reviewing purposes."}
+        />
+        <TimerCards
+          type={"Timeless"}
+          subjects={subjects}
+          description={"disables the time for reviewing purposes."}
+        /> */}
       </View>
     </View>
   );
