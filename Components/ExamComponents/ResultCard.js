@@ -3,6 +3,7 @@ import { View, Text, StyleSheet } from "react-native";
 import { Surface } from "react-native-paper";
 
 function Score({ subject, score, items }) {
+  console.log(score);
   return (
     <View
       style={{
@@ -22,16 +23,16 @@ function Score({ subject, score, items }) {
   );
 }
 
-function ResultCard() {
+function ResultCard({ score }) {
   return (
     <Surface style={resultStyles.container}>
       <Text style={{ fontSize: 30, fontFamily: "MontserratBold" }}>
         Results
       </Text>
-      <Score score={"45"} items={"/60"} subject={"English"} />
-      <Score score={"12"} items={"/60"} subject={"Mathematics"} />
+      <Score score={score} items={"/60"} subject={"English"} />
+      {/* <Score score={"12"} items={"/60"} subject={"Mathematics"} />
       <Score score={"34"} items={"/60"} subject={"English"} />
-      <Score score={"22"} items={"/60"} subject={"English"} />
+      <Score score={"22"} items={"/60"} subject={"English"} /> */}
       <View
         style={{
           flexGrow: 1,

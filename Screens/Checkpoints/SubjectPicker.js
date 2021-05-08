@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { Button } from "react-native-paper";
 import SubjectCards from "../../Components/CheckpointsComponents/SubjectCards";
+import FormikBox from "../../Components/CheckpointsComponents/FormikBox";
 function SubjectPicker({ route, navigation }) {
   const { subjects } = route.params;
   return (
@@ -21,6 +22,7 @@ function SubjectPicker({ route, navigation }) {
         {subjects.map((items) => {
           return <SubjectCards subjectName={items} />;
         })}
+        <FormikBox />
         <Button mode="contained" onPress={() => console.log("Pressed")}>
           Exam
         </Button>

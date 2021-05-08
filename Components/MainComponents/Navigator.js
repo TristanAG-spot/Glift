@@ -19,7 +19,7 @@ function Navigator() {
       screenOptions={{
         headerShown: false,
       }}
-      initialRouteName={"Score"}
+      initialRouteName={"Exam"}
     >
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Register" component={Register} />

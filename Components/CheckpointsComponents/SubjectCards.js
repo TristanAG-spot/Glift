@@ -1,9 +1,11 @@
+import { Formik, Field } from "formik";
 import React from "react";
 import { TouchableOpacity, Text, View, StyleSheet } from "react-native";
 import { Surface, Checkbox, TouchableRipple, Button } from "react-native-paper";
+
 function SubjectCards({ subjectName }) {
   const [checked, setChecked] = React.useState(false);
-
+  console.log(checked);
   return (
     <TouchableRipple borderless={true}>
       <Surface style={styles.bigCards}>

@@ -24,7 +24,9 @@ function ResultButtons({ label, navigation }) {
   );
 }
 
-const Score = ({ navigation }) => {
+const Score = ({ navigation, route }) => {
+  const { correct } = route.params;
+
   return (
     <SafeAreaView
       style={{
@@ -35,7 +37,7 @@ const Score = ({ navigation }) => {
       }}
     >
       <View>
-        <ResultCard />
+        <ResultCard score={correct} />
         <View style={{ flexDirection: "row", justifyContent: "space-evenly" }}>
           <ResultButtons label={"Home"} navigation={navigation} />
           <ResultButtons label={"Share"} />
