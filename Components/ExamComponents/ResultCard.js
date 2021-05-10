@@ -50,9 +50,10 @@ function ResultCard({ score }) {
 
 const resultStyles = StyleSheet.create({
   container: {
-    width: 400,
+    width: 300,
     justifyContent: "center",
     alignSelf: "center",
+
     borderRadius: 10,
     padding: 20,
   },
