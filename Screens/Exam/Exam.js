@@ -1,6 +1,14 @@
 import React from "react";
-import { SafeAreaView, View, StyleSheet, Button } from "react-native";
+import {
+  SafeAreaView,
+  View,
+  Text,
+  StyleSheet,
+  Button,
+  ScrollView,
+} from "react-native";
 
+import { Banner } from "react-native-paper";
 import Question from "./Question";
 
 function Exam({ navigation }) {
@@ -23,6 +31,12 @@ function Exam({ navigation }) {
         },
         {
           question: "Who is the president of The Philippines",
+          choices: ["Bloom", "Kent", "Luigi", "Mario"],
+          correctAnswer: "Mario",
+        },
+        {
+          question:
+            "Let X^2 equals 5 what is the average height of the most valuable player?",
           choices: ["Bloom", "Kent", "Luigi", "Mario"],
           correctAnswer: "Mario",
         },
@@ -51,10 +65,27 @@ function Exam({ navigation }) {
     navigation.navigate("Score", { correct });
     console.log("Correct Answer: ", correct);
   };
-
+  const [visible, setVisible] = React.useState(true);
   return (
     <SafeAreaView>
-      <View>
+      <ScrollView>
+        <Banner
+          visible={visible}
+          actions={[
+            {
+              label: "OK, Got It.",
+              onPress: () => setVisible(false),
+            },
+          ]}
+          style={{ paddingTop: 15 }}
+        >
+          <Text style={styles.title}>
+            Instructions:{" "}
+            <Text style={{ fontFamily: "MontserratRegular" }}>
+              {Questions[0].sectionInstruction}
+            </Text>
+          </Text>
+        </Banner>
         {Questions &&
           Questions.map((query) => {
             return query.questionSet.map((item, index) => {
@@ -69,9 +100,8 @@ function Exam({ navigation }) {
               );
             });
           })}
-      </View>
-
-      <Button title="Submit" onPress={() => handleSubmit({ navigation })} />
+        <Button title="Submit" onPress={() => handleSubmit({ navigation })} />
+      </ScrollView>
     </SafeAreaView>
   );
 }

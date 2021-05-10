@@ -8,15 +8,16 @@ import {
 } from "react-native-paper";
 
 function Question(props) {
-  const { index, question, choices, correctAnswer, handleAnswers } = props;
-
+  const { index, question, choices, instruction, handleAnswers } = props;
   const [value, setValue] = React.useState("");
 
   return (
     <View style={styles.formWrapper}>
       <Text style={styles.title}>
-        QUESTION {index}: {question}
+        {index}.{" "}
+        <Text style={{ fontFamily: "MontserratSemiBold" }}>{question}</Text>
       </Text>
+
       <RadioButton.Group
         onValueChange={(newValue) => {
           setValue(newValue);
@@ -36,6 +37,7 @@ function Question(props) {
                     value={item}
                     label={item}
                     style={{ flexDirection: "row" }}
+                    mode="android"
                     labelStyle={{
                       marginVertical: 10,
                       marginRight: 20,
@@ -69,6 +71,7 @@ const styles = StyleSheet.create({
   },
   formWrapper: {
     flex: 1,
+
     marginVertical: 70,
     paddingHorizontal: 30,
   },
