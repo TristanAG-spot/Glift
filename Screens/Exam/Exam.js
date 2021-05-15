@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  SafeAreaView,
-  View,
-  Text,
-  StyleSheet,
-  Button,
-  ScrollView,
-} from "react-native";
+import { SafeAreaView, Text, StyleSheet, Button, FlatList } from "react-native";
 
 import { Banner } from "react-native-paper";
 import Question from "./Question";
@@ -19,6 +12,69 @@ function Exam({ navigation }) {
       sectionInstruction:
         " Choose the letter of the best answer from the given choices.",
       questionSet: [
+        {
+          question: "What is the Capital of the Philippines?",
+          choices: ["Manila", "Zamboanga", "Cebu", "Bataan"],
+          correctAnswer: "Manila",
+        },
+        {
+          question: "What is an Apple?",
+          choices: ["Red", "Green", "Blue", "Black"],
+          correctAnswer: "Green",
+        },
+        {
+          question: "Who is the president of The Philippines",
+          choices: ["Bloom", "Kent", "Luigi", "Mario"],
+          correctAnswer: "Mario",
+        },
+        {
+          question:
+            "Let X^2 equals 5 what is the average height of the most valuable player?",
+          choices: ["Bloom", "Kent", "Luigi", "Mario"],
+          correctAnswer: "Mario",
+        },
+        {
+          question: "What is the Capital of the Philippines?",
+          choices: ["Manila", "Zamboanga", "Cebu", "Bataan"],
+          correctAnswer: "Manila",
+        },
+        {
+          question: "What is an Apple?",
+          choices: ["Red", "Green", "Blue", "Black"],
+          correctAnswer: "Green",
+        },
+        {
+          question: "Who is the president of The Philippines",
+          choices: ["Bloom", "Kent", "Luigi", "Mario"],
+          correctAnswer: "Mario",
+        },
+        {
+          question:
+            "Let X^2 equals 5 what is the average height of the most valuable player?",
+          choices: ["Bloom", "Kent", "Luigi", "Mario"],
+          correctAnswer: "Mario",
+        },
+        {
+          question: "What is the Capital of the Philippines?",
+          choices: ["Manila", "Zamboanga", "Cebu", "Bataan"],
+          correctAnswer: "Manila",
+        },
+        {
+          question: "What is an Apple?",
+          choices: ["Red", "Green", "Blue", "Black"],
+          correctAnswer: "Green",
+        },
+        {
+          question: "Who is the president of The Philippines",
+          choices: ["Bloom", "Kent", "Luigi", "Mario"],
+          correctAnswer: "Mario",
+        },
+        {
+          question:
+            "Let X^2 equals 5 what is the average height of the most valuable player?",
+          choices: ["Bloom", "Kent", "Luigi", "Mario"],
+          correctAnswer: "Mario",
+        },
         {
           question: "What is the Capital of the Philippines?",
           choices: ["Manila", "Zamboanga", "Cebu", "Bataan"],
@@ -66,42 +122,61 @@ function Exam({ navigation }) {
     console.log("Correct Answer: ", correct);
   };
   const [visible, setVisible] = React.useState(true);
+
+  const Instruction = () => {
+    return (
+      <Banner
+        visible={visible}
+        actions={[
+          {
+            label: "OK, Got It.",
+            onPress: () => setVisible(false),
+          },
+        ]}
+        style={{ paddingTop: 15 }}
+      >
+        <Text style={styles.title}>
+          Instructions:{" "}
+          <Text style={{ fontFamily: "MontserratRegular" }}>
+            {Questions[0].sectionInstruction}
+          </Text>
+        </Text>
+      </Banner>
+    );
+  };
+
+  const SubmitExam = () => {
+    return (
+      <Button title="Submit" onPress={() => handleSubmit({ navigation })} />
+    );
+  };
+
+  const renderItem = ({ item }) => {
+    return item.questionSet.map((query, index) => {
+      return (
+        <Question
+          index={index + 1}
+          question={query.question}
+          choices={query.choices}
+          correctAnswer={query.correctAnswer}
+          handleAnswers={handleAnswers}
+        />
+      );
+    });
+  };
+
   return (
     <SafeAreaView>
-      <ScrollView>
-        <Banner
-          visible={visible}
-          actions={[
-            {
-              label: "OK, Got It.",
-              onPress: () => setVisible(false),
-            },
-          ]}
-          style={{ paddingTop: 15 }}
-        >
-          <Text style={styles.title}>
-            Instructions:{" "}
-            <Text style={{ fontFamily: "MontserratRegular" }}>
-              {Questions[0].sectionInstruction}
-            </Text>
-          </Text>
-        </Banner>
-        {Questions &&
-          Questions.map((query) => {
-            return query.questionSet.map((item, index) => {
-              return (
-                <Question
-                  index={index + 1}
-                  question={item.question}
-                  choices={item.choices}
-                  correctAnswer={item.correctAnswer}
-                  handleAnswers={handleAnswers}
-                />
-              );
-            });
-          })}
-        <Button title="Submit" onPress={() => handleSubmit({ navigation })} />
-      </ScrollView>
+      <FlatList
+        data={Questions}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id}
+        ListHeaderComponent={<Instruction />}
+        ListFooterComponent={<SubmitExam />}
+        initialNumToRender={5}
+        onEndReached={() => console.log("endReached")}
+        onEndReachedThreshold={5}
+      />
     </SafeAreaView>
   );
 }
