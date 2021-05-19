@@ -74,11 +74,10 @@ function AdmissionCards() {
     <FlatList
       data={schoolData}
       renderItem={renderItem}
-      horizontal={true}
-      keyExtractor={(item) => item.id}
       horizontal={false}
+      keyExtractor={(item) => item.id}
       style={styles.FlatList}
-      numColumns={2}
+      numColumns={1}
     />
   );
 }
@@ -97,11 +96,11 @@ const styles = StyleSheet.create({
     alignSelf: "flex-start",
   },
   topCards: {
-    height: 70,
-    width: 150,
+    height: 150,
+
     flexGrow: 1,
     padding: 20,
-    marginRight: 10,
+
     marginBottom: 20,
     borderRadius: 15,
     justifyContent: "center",
@@ -120,7 +119,10 @@ const styles = StyleSheet.create({
   },
   cardImage: { height: 30, width: 30, marginLeft: 10 },
 
-  FlatList: { padding: 25 },
+  FlatList: {
+    marginTop: 10,
+    marginRight: 10,
+  },
   detailWrapper: {
     flexDirection: "column",
   },

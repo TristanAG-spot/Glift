@@ -40,9 +40,6 @@ const Item = ({
     >
       <Image source={image} style={styles.cardImage} />
       <Text style={[styles.title, { color: tCM }]}>{testName}</Text>
-      <View style={[styles.dateBlock, { backgroundColor: aC }]}>
-        <Text style={[styles.dateText, { color: tCS }]}>April 23, 2021</Text>
-      </View>
     </TouchableOpacity>
   );
 };
@@ -73,10 +70,6 @@ function AdmissionCards() {
 }
 
 const styles = StyleSheet.create({
-  Container: {
-    flex: 1,
-    backgroundColor: "white",
-  },
   HeadWrapper: { padding: 30 },
   searchBar: {
     borderRadius: 15,
@@ -93,9 +86,9 @@ const styles = StyleSheet.create({
     alignSelf: "flex-start",
   },
   topCards: {
-    height: 170,
-    width: 125,
-    padding: 20,
+    height: 80,
+    width: 65,
+    paddingTop: 10,
     marginRight: 20,
     marginBottom: 20,
     borderRadius: 15,
@@ -110,13 +103,14 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   title: {
-    fontSize: 20,
+    fontSize: 13,
     fontFamily: "MontserratBold",
   },
-  cardImage: { height: 80, width: 80, marginBottom: 10 },
+  cardImage: { height: 40, width: 40, marginBottom: 10 },
 
   FlatList: {
-    paddingLeft: 30,
+    marginTop: 10,
+    paddingLeft: 15,
   },
   dateText: {
     fontFamily: "MontserratBold",

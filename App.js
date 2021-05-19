@@ -5,8 +5,23 @@ import { createStackNavigator } from "@react-navigation/stack";
 import AppLoading from "expo-app-loading";
 import { useFonts } from "expo-font";
 import Navigator from "./Components/MainComponents/Navigator";
+import { DefaultTheme, Provider as PaperProvider } from "react-native-paper";
 
 const Stack = createStackNavigator();
+
+const theme = {
+  ...DefaultTheme,
+  roundness: 2,
+
+  colors: {
+    ...DefaultTheme.colors,
+    primary: "#3498db",
+    accent: "#f1c40f",
+    gliftRed: "#BF2C47",
+    gliftLight: "#F2F2E9",
+    gliftBlack: "#403F3E",
+  },
+};
 
 function App() {
   let [fontsLoaded] = useFonts({
@@ -20,9 +35,11 @@ function App() {
     return <AppLoading />;
   } else {
     return (
-      <NavigationContainer>
-        <Navigator />
-      </NavigationContainer>
+      <PaperProvider theme={theme}>
+        <NavigationContainer>
+          <Navigator />
+        </NavigationContainer>
+      </PaperProvider>
     );
   }
 }
